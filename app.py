@@ -7,6 +7,43 @@ from st_btn_select import st_btn_select
 st.set_page_config('UCD Badminton Socials')
 st.title('UCD Badminton Socials')
 st.title('Random Player Selector')
+
+
+footer="""<style>
+a:link , a:visited{
+color: blue;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:hover,  a:active {
+color: red;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: white;
+color: black;
+text-align: center;
+}
+</style>
+<div class="footer">
+<p>Built with ❤ by <a style='text-align:center' href="https://github.com/zobekenobe" target="_blank">zobekenobe</a></p>
+</div>
+"""
+st.markdown(footer,unsafe_allow_html=True)
+
+
+
+
+
+
+
 st.sidebar.subheader('About')
 st.sidebar.write(f'1. Create you list of players in a GOOGLE SHEET')
 st.sidebar.write(f'2. Enter the available courts for the day and the time alotted for each session')
@@ -30,7 +67,7 @@ with col2:
 
 newlink   = sheetlink.split('/')[-2]
 filename  = 'https://docs.google.com/spreadsheets/d/' +  newlink + '/gviz/tq?tqx=out:csv'			    
-			    
+
 # filename = st.sidebar.file_uploader(label = 'Enter a .csv file with names of players')
 # if filename is not None:
 df = pd.read_csv(filename)
