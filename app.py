@@ -5,13 +5,15 @@ import time
 from st_btn_select import st_btn_select
 
 st.set_page_config('UCD Badminton Socials')
-st.title('Badminton Random Player Selector')
+st.title('UCD Badminton Socials')
+st.title('Random Player Selector')
 st.sidebar.subheader('About')
-st.sidebar.write(f'1. Add the names of a player in a .csv file and upload it')
+st.sidebar.write(f'1. Create you list of players in a GOOGLE SHEET')
 st.sidebar.write(f'2. Enter the available courts for the day and the time alotted for each session')
+st.sidebar.write(f'3. Press start and session runs for upto 1 hour before auto reset')
 
 num_of_courts = st.sidebar.number_input(label = 'Enter the number of courts available',min_value = 1, max_value = 6, step = 1)
-session_time  = st.sidebar.number_input(label = 'Enter the time for each session', min_value = 10, max_value = 25, step = 1)
+session_time  = st.sidebar.number_input(label = 'Enter the time for each session', min_value = 5, max_value = 25, step = 1)
 
 num_of_sessions = int(60/session_time)
 wait_time = int(60 * session_time/100)
