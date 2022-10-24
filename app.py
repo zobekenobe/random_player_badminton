@@ -15,13 +15,9 @@ session_time  = st.sidebar.number_input(label = 'Enter the time for each session
 
 num_of_sessions = int(60/session_time)
 wait_time = int(60 * session_time/100)
-filename = st.sidebar.file_uploader(label = 'Enter a .csv file with names of players')
-if filename is not None:
-    df = pd.read_csv(filename)
-    players = df.copy()
-else:
-    st.stop()
 
+
+sheetlink = st.sidebar.text_input(label = 'Enter the link to the Google Spreadsheet')
 col1, col2 = st.sidebar.columns([0.25,1])
 with col1:
     if not st.button('Start'):
@@ -29,6 +25,16 @@ with col1:
 with col2:
     if st.button('Stop'):
         st.stop()
+
+newlink   = sheetlink.split('/')[-2]
+filename  = 'https://docs.google.com/spreadsheets/d/' +  newlink + '/gviz/tq?tqx=out:csv'			    
+			    
+# filename = st.sidebar.file_uploader(label = 'Enter a .csv file with names of players')
+# if filename is not None:
+df = pd.read_csv(filename)
+df.columns = ['Players']
+players = df.copy()
+
 
 progress_bar = st.sidebar.progress(0)
 status_text = st.sidebar.empty()
